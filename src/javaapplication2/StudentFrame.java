@@ -72,6 +72,7 @@ public class StudentFrame extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         btnFind = new javax.swing.JButton();
+        txtshow = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblStudent = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
@@ -142,6 +143,13 @@ public class StudentFrame extends javax.swing.JFrame {
             }
         });
 
+        txtshow.setText("Show");
+        txtshow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtshowActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -174,6 +182,8 @@ public class StudentFrame extends javax.swing.JFrame {
                         .addComponent(btnDelete)
                         .addGap(18, 18, 18)
                         .addComponent(btnFind)))
+                .addGap(18, 18, 18)
+                .addComponent(txtshow, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -202,12 +212,13 @@ public class StudentFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFind)
                     .addComponent(btnDelete)
                     .addComponent(btnReset)
-                    .addComponent(btnSave))
+                    .addComponent(btnSave)
+                    .addComponent(txtshow))
                 .addGap(15, 15, 15))
         );
 
@@ -239,7 +250,7 @@ public class StudentFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6))
         );
@@ -319,6 +330,18 @@ public class StudentFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnFindActionPerformed
 
+    private void txtshowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtshowActionPerformed
+        // TODO add your handling code here:
+        studentList = StudentModify.findAll();
+
+        tableModel.setRowCount(0);
+
+        studentList.forEach((student) -> {
+            tableModel.addRow(new Object[]{tableModel.getRowCount() + 1, student.getFullname(),
+                student.getGender(), student.getEmail(), student.getPhoneNumber()});
+        });
+    }//GEN-LAST:event_txtshowActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -377,5 +400,6 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea txtEmail;
     private javax.swing.JTextArea txtFullname;
     private javax.swing.JTextArea txtPhoneNumber;
+    private javax.swing.JButton txtshow;
     // End of variables declaration//GEN-END:variables
 }
