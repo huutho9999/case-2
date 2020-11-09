@@ -23,10 +23,8 @@ public class StudentModify {
         Statement statement = null;
         
         try {
-            //lay tat ca danh sach sinh vien
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student", "root", "concakiem12");
             
-            //query
             String sql = "select * from student_table";
             statement = connection.createStatement();
             
@@ -58,7 +56,6 @@ public class StudentModify {
                 }
             }
         }
-        //ket thuc.
         
         return studentList;
     }
@@ -68,10 +65,8 @@ public class StudentModify {
         PreparedStatement statement = null;
         
         try {
-            //lay tat ca danh sach sinh vien
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student", "root", "concakiem12");
             
-            //query
             String sql = "insert into student_table(fullname, gender, age, email, phone_number) values(?, ?, ?, ?, ?)";
             statement = connection.prepareCall(sql);
             
@@ -101,7 +96,6 @@ public class StudentModify {
                 }
             }
         }
-        //ket thuc.
     }
     
     public static void update(Student std) {
@@ -109,10 +103,8 @@ public class StudentModify {
         PreparedStatement statement = null;
         
         try {
-            //lay tat ca danh sach sinh vien
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student", "root", "concakiem12");
             
-            //query
             String sql = "update student_table set fullname=?,gender=?,age=?,email=?,phone_number=? where id = ?";
             statement = connection.prepareCall(sql);
             
@@ -143,7 +135,6 @@ public class StudentModify {
                 }
             }
         }
-        //ket thuc.
     }
     
     public static void delete(int id) {
@@ -151,10 +142,8 @@ public class StudentModify {
         PreparedStatement statement = null;
         
         try {
-            //lay tat ca danh sach sinh vien
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student", "root", "concakiem12");
             
-            //query
             String sql = "delete from student_table where id = ?";
             statement = connection.prepareCall(sql);
             
@@ -180,7 +169,6 @@ public class StudentModify {
                 }
             }
         }
-        //ket thuc.
     }
     
     public static List<Student> findByFullname(String fullname) {
@@ -190,10 +178,8 @@ public class StudentModify {
         PreparedStatement statement = null;
         
         try {
-            //lay tat ca danh sach sinh vien
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student", "root", "concakiem12");
             
-            //query
             String sql = "select * from student_table where fullname like ?";
             statement = connection.prepareCall(sql);
             statement.setString(1, "%"+fullname+"%");
@@ -226,7 +212,6 @@ public class StudentModify {
                 }
             }
         }
-        //ket thuc.
         
         return studentList;
     }
